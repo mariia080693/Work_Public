@@ -44,7 +44,7 @@ Exp_Q = {
 }
 
 # Strain rate vs experimental Ca2+
-fig, ax = plt.subplots(figsize=(10, 10))
+fig, ax = plt.subplots(figsize=(14, 10))  # wider plot
 colors = ['g-', 'g-', 'g-', 'g-']
 linewidths = [1, 2, 3, 4]
 Q_values = [12.5, 50, 200, 600]
@@ -61,18 +61,19 @@ ax.axvline(620, linestyle='--', color='k', linewidth=1, label='hyperbolic sectio
 ax.set_xlim([0, 1000])
 ax.set_ylim([-25000, 25000])
 ax.grid(True)
-ax.tick_params(labelsize=20)
+ax.tick_params(labelsize=20)  # set both x and y ticks to same size
 
 ax2 = ax.twinx()
 for i, Q in enumerate(Q_values):
     ax2.plot(Experiment_x, Exp_Q[Q], 'b-', linewidth=linewidths[i])
 ax2.set_ylabel("[Ca$^{2+}$]$_{c}$(nM)", color='blue', fontsize=25)
 ax2.set_ylim([0, 250])
+ax2.tick_params(labelsize=20)  # set y ticks to same size
 
 fig.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=3, fontsize=20)
 
 # Gradient of strain rate vs experimental Ca2+
-fig, ax = plt.subplots(figsize=(10, 10))
+fig, ax = plt.subplots(figsize=(14, 10))  # wider plot
 strain_grad_data = [Q12_dudxdx, Q50_dudxdx, Q200_dudxdx, Q600_dudxdx]
 
 for i, Q in enumerate(Q_values):
@@ -85,12 +86,15 @@ ax.axvline(620, linestyle='--', color='k', linewidth=1)
 ax.set_xlim([0, 1000])
 ax.set_ylim([-2e9, 0.25e9])
 ax.grid(True)
-ax.tick_params(labelsize=20)
+ax.tick_params(labelsize=20)  # set both x and y ticks to same size
 
 ax2 = ax.twinx()
 for i, Q in enumerate(Q_values):
     ax2.plot(Experiment_x, Exp_Q[Q], 'b-', linewidth=linewidths[i])
 ax2.set_ylabel("[Ca$^{2+}$]$_{c}$(nM)", color='blue', fontsize=25)
 ax2.set_ylim([0, 250])
+ax2.tick_params(labelsize=20)  # set y ticks to same size
 
 fig.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=3, fontsize=20)
+
+plt.show()
